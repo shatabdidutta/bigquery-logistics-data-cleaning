@@ -275,9 +275,10 @@ Standardized dates are necessary for:
 SELECT shipment_id,
        ship_date,
        delivery_date
-FROM logistics.dirty_shipments
-WHERE PARSE_DATE('%Y-%m-%d', delivery_date)
-    < PARSE_DATE('%Y-%m-%d', ship_date);
+FROM `scaler-data-science-sql-411623.logistics.dirty_shipments`
+WHERE SAFE.PARSE_DATE('%Y-%m-%d', delivery_date)
+    < SAFE.PARSE_DATE('%Y-%m-%d', ship_date);
+
 ```
 
 ## Explanation
@@ -375,12 +376,12 @@ A cleaned dataset improves:
 
 ```sql
 SELECT shipment_id,
-       DATE_DIFF(
-           PARSE_DATE('%Y-%m-%d', delivery_date),
-           PARSE_DATE('%Y-%m-%d', ship_date),
-           DAY
-       ) AS delivery_days
-FROM logistics.dirty_shipments;
+       ship_date,
+       delivery_date
+FROM `scaler-data-science-sql-411623.logistics.dirty_shipments`
+WHERE SAFE.PARSE_DATE('%Y-%m-%d', delivery_date)
+    < SAFE.PARSE_DATE('%Y-%m-%d', ship_date);
+
 ```
 
 ## Explanation

@@ -109,7 +109,7 @@ Duplicate shipment records can cause:
 * Duplicate reporting
 * Incorrect inventory tracking
 
-The dataset contains duplicate shipment entries that must be removed before analysis.
+The dataset does not contain duplicate shipment entries that must be removed before analysis.
 
 ---
 
